@@ -1,0 +1,12 @@
+cat <<EOF > frontend/package.json
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Placeholder frontend app",
+  "scripts": {
+    "build": "echo 'Frontend build simulated'"
+  },
+  "dependencies": {}
+}
+EOF
+
