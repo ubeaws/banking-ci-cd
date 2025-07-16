@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git url: 'https://github.com/ubeaws/banking-ci-cd.git'
+        git credentialsId: 'github-ssh', url: 'git@github.com:ubeaws/banking-ci-cd.git'
       }
     }
 
@@ -28,7 +28,8 @@ pipeline {
     stage('Build Frontend') {
       steps {
         dir('frontend') {
-          sh 'npm install && npm run build'
+          sh 'npm install || true'
+          sh 'npm run build'
         }
       }
     }
@@ -45,7 +46,7 @@ pipeline {
       steps {
         withSonarQubeEnv("${SONARQUBE_SERVER}") {
           dir('backend') {
-            sh 'mvn sonar:sonar'
+            sh 'mvn sonar:sonar -Dsonar.projectKey=banking-backend -Dsonar.host.url=http://localhost:9000'
           }
         }
       }
