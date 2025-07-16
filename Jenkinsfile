@@ -46,7 +46,7 @@ pipeline {
       steps {
         withSonarQubeEnv("${SONARQUBE_SERVER}") {
           dir('backend') {
-            sh 'mvn sonar:sonar -Dsonar.projectKey=banking-backend -Dsonar.host.url=http://localhost:9000'
+            sh 'mvn sonar:sonar -Dsonar.projectKey=banking-backend -Dsonar.host.url=http://sonarqube:9000'
           }
         }
       }
