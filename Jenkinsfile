@@ -42,11 +42,11 @@ pipeline {
       }
     }
 
-    stage('SonarQube Analysis') {
-      steps {
-        withSonarQubeEnv("${SONARQUBE_SERVER}") {
-          dir('backend') {
-            sh 'mvn sonar:sonar -Dsonar.projectKey=banking-backend -Dsonar.host.url=http://sonarqube:9000'
+stage('SonarQube Analysis') {
+  steps {
+    withSonarQubeEnv('MySonar') { // replace 'MySonar' with your configured server name
+      dir('backend') {
+        sh 'mvn clean verify sonar:sonar'
           }
         }
       }
