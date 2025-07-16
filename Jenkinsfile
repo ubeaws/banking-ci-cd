@@ -13,7 +13,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git url: 'https://github.com/yourusername/banking-ci-cd.git'
+        git url: 'https://github.com/ubeaws/banking-ci-cd.git'
       }
     }
 
